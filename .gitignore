@@ -1,0 +1,14 @@
+# created by virtualenv automatically
+/__pycache__
+
+/bin
+
+/funcs/__pycache__
+
+/lib
+
+.env
+
+*.rest
+
+*.cfg
