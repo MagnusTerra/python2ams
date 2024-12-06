@@ -24,7 +24,8 @@ def translate():
 
     result_lex = detect_language(code, code_type)
 
-    if result_lex["status"] :
+    if result_lex["status"] == True:
+        print(result_lex["status"])
         try:
             asm_code = tranlate_to_asm(code)
             
@@ -36,12 +37,12 @@ def translate():
         except Exception as e:
             return jsonify({
                 'error' : f"An Error have ocurred: {e}"
-            }), 400
-    
+            }), 500
     else :
         return jsonify({
+            'status' : False,
             'error' : result_lex['content']
-        })
+        }), 400
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
