@@ -20,19 +20,25 @@ def detect_language(code_snippet, filename=None):
         return {f'An unexpecteed error have ocurred: {e}'}
         
 
-# Example Usage
-java_code = """
-class Test
-{
-    public static void main(String []args)
-    {
-        System.out.println("My First Java Program.");
-    }
-};
-"""
 
 
+def clean_asm_code(input_code: str) -> str:
+    """
+    Cleans out the ```asm and ``` markers from the provided code string.
+    Args:
+        input_code: A multi-line string that includes asm-like markers.
+    
+    Returns:
+        The cleaned-up string without ```asm or ``` markers.
+    """
+    # Split the string by lines and clean markers
+    cleaned_lines = []
+    for line in input_code.splitlines():
+        # Remove ```asm or ```
+        if line.strip() not in ["```asm", "```"]:
+            cleaned_lines.append(line)
+    
+    # Combine the cleaned-up lines back into a single string
+    return "\n".join(cleaned_lines)
 
-result = detect_language(java_code, 'python')
 
-print(result)

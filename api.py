@@ -29,9 +29,10 @@ def translate():
         try:
             asm_code = tranlate_to_asm(code)
             
+            cleand_code =  clean_asm_code(asm_code)
             return jsonify({
                 'status' : True,
-                'code' : asm_code
+                'code' : cleand_code
             }), 200
             
         except Exception as e:
